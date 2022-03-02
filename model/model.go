@@ -25,10 +25,10 @@ type Author struct {
 
 //Deletable interface Delete function for book
 type Deletable interface {
-	Delete(id int)
+	Delete()
 }
 
-func (b *Book) Delete(id int) {
+func (b *Book) Delete() {
 	b.IsDelete = true
 }
 
@@ -67,6 +67,12 @@ func (b *Book) BuyBook(amount int) {
 	}
 }
 
+//Convert ID to index in slice ==> Basic but needed if algorithm of Id generator change code will be break
 func IDtoIndex(id int) int {
 	return id - 1
+}
+
+//Convert Index to book ID in struct ==> Basic but needed if algorithm of Id generator change code will be break
+func IndexToID(index int) int {
+	return index + 1
 }

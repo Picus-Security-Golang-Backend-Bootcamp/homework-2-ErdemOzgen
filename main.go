@@ -41,7 +41,7 @@ func main() {
 	fmt.Println("main has been started")
 	model.ListBooks(books)
 	model.Buy(1, 200, books)
-	books[0].Delete(1)
+	books = model.DeleteSlice(1, books)
 	model.ListBooks(books)
 	fmt.Println("main has been stoped")
 
