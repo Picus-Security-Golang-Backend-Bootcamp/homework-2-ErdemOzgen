@@ -24,7 +24,9 @@ type Author struct {
 
 func ListBooks(books []Book) {
 	for i := 0; i < len(books); i++ {
-		fmt.Println(books[i])
+		if books[i].IsDelete {
+			fmt.Println(i, ":", books[i])
+		}
 	}
 }
 
