@@ -33,7 +33,8 @@ func ListBooks(books []Book) {
 		if !books[i].IsDelete {
 			fmt.Println(i, ":", books[i])
 		} else {
-			fmt.Println("Book is Deleted")
+			fmt.Print("Book is Deleted")
+			//fmt.Print("") // You can use just like pass in python
 		}
 	}
 }
@@ -109,12 +110,4 @@ func NewBook() *Book {
 	b.IsDelete = false
 
 	return b
-}
-
-type Deleteable interface {
-	Delete(id int) error
-}
-
-type Buyable interface {
-	Buy(id, amount int) error
 }

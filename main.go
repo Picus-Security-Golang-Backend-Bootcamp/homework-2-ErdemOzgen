@@ -29,12 +29,12 @@ func init() {
 	e2.Author.Name = "William Shakespeare"
 	e2.BookName = "The Tempest"
 	e2.ISBN = "1586638491"
-	e2.IsDelete = false
+	e2.IsDelete = true
 	e3 := *model.NewBook()
 	e3.Author.Name = "Hall"
 	e3.BookName = "Glorified Fasting: The Abc of Fasting"
 	e3.ISBN = "1684220661"
-	e3.SetDeleted()
+	e3.IsDelete = false
 	books = append(books, model.Book(e1), model.Book(e2), model.Book(e3)) // add to book slice
 
 }
@@ -68,9 +68,7 @@ func main() {
 	model.ListBooks(books)
 	ss := model.SearchId(2, books)
 	fmt.Println("ss==========>", ss)
-	s3 := model.Delete(0, books)
-	fmt.Println("s3==========>", len(s3))
 	model.ListBooks(books)
 }
 
-//-----------------END MAIN----------------
+//-----------------END MAIN----------------n
