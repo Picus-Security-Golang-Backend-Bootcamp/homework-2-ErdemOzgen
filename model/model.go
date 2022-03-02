@@ -66,3 +66,9 @@ func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 
 	return authorSlice, titleSlice, skuSlice
 }
+
+func (b *Book) SetDeleted() {
+	fmt.Println("Book Delete function", b.IsDelete)
+	b.IsDelete = true
+	fmt.Println("Book Deleted", b.IsDelete)
+}
