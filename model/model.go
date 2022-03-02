@@ -40,6 +40,7 @@ func NewBook() *Book {
 	return b
 }
 
+// function set book struct fields // TODO: Will be used for random generator
 func (b *Book) SetBookParams(authorName, bookName, isbn string, pageNumber, price, stockAmount int) {
 	b.Author.Name = authorName
 	b.BookName = bookName
