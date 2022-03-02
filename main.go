@@ -6,10 +6,10 @@ import (
 )
 
 //-----------------GLOBALS----------------
-var BookID int = 0 // Global variable for book ID
-var books []model.Book
-
+//var BookID int = 0 // Global variable for book ID
 type Book model.Book
+
+var books []model.Book
 
 //----------------ENDGLOBALS----------------
 //------------------Contructor------------------
