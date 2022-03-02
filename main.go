@@ -43,6 +43,7 @@ func main() {
 	model.Buy(1, 200, books)
 	books = model.DeleteSlice(1, books)
 	model.ListBooks(books)
+
 	fmt.Println("main has been stoped")
 
 }

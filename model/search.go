@@ -73,11 +73,16 @@ func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 }
 
 // SearchId function search book id in books struct slice and returns index if not found returns -1
+/* EXAMPLE
+i := model.SearchId(2, books)
+if i != -1 {
+	fmt.Println("Book is deleted")
+}*/
 func SearchId(id int, b []Book) int {
 	for i := 0; i < len(b); i++ {
 		if b[i].ID == id {
 			return i
 		}
 	}
-	return -1
+	return -1 //IDNotInRange Error is not implemented yet
 }
