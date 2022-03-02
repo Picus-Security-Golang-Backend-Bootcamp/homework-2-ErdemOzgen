@@ -23,8 +23,13 @@ type Author struct {
 	AuthorInfo string
 }
 
+//Deletable interface Delete function for book
 type Deletable interface {
-	Delete()
+	Delete(id int)
+}
+
+func (b *Book) Delete(id int) {
+	b.IsDelete = true
 }
 
 // Constructor for Book struct type Book model.Book
