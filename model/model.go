@@ -6,6 +6,8 @@ import (
 )
 
 var BookID int64 = 0 // Global Book ID stars from zero increment by 1
+
+//Book struct
 type Book struct {
 	Author             // Author Struct Embedded
 	ID          int64  // Id starts from 0 to increment by 1
@@ -17,10 +19,14 @@ type Book struct {
 	IsDelete    bool   // Check for book deleted or not
 
 }
+
+// Author struct embeded in Book struct
 type Author struct {
 	Name       string
 	AuthorInfo string
 }
+
+// ListBooks function List all books if is not IsDelete set true
 
 func ListBooks(books []Book) {
 	for i := 0; i < len(books); i++ {
@@ -30,6 +36,7 @@ func ListBooks(books []Book) {
 	}
 }
 
+// SearchAuthor function search author name in books struct slice
 func SearchAuthor(s string, b []Book) []Book {
 	var result []Book
 	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
@@ -40,6 +47,8 @@ func SearchAuthor(s string, b []Book) []Book {
 	}
 	return result
 }
+
+// searchBookName function search book name in books struct slice
 func SearchBookName(s string, b []Book) []Book {
 	var result []Book
 	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
@@ -50,6 +59,8 @@ func SearchBookName(s string, b []Book) []Book {
 	}
 	return result
 }
+
+// search function search book sku in books struct slice
 func SearchSKU(s string, b []Book) []Book {
 	var result []Book
 	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
@@ -61,6 +72,7 @@ func SearchSKU(s string, b []Book) []Book {
 	return result
 }
 
+// SearchAll function is combination of three search functions
 func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 	s = strings.ToLower(s) // TODO: remove after strings.ToLower() in other functions
 	authorSlice := SearchAuthor(s, b)
@@ -70,12 +82,14 @@ func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 	return authorSlice, titleSlice, skuSlice
 }
 
+// Struct method for setting IsDeleted to true
 func (b *Book) SetDeleted() {
 	fmt.Println("Book Delete function", b.IsDelete)
 	b.IsDelete = true
 	fmt.Println("Book Deleted", b.IsDelete)
 }
 
+// Constructor for Book struct
 func NewBook() *Book {
 	b := new(Book)
 	b.Author.Name = "Erdem"
