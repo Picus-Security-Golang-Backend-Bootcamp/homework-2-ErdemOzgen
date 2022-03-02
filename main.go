@@ -15,36 +15,20 @@ type Book model.Book
 //------------------Contructor------------------
 // Basic Contructor
 
-func NewBook() *Book {
-	b := new(Book)
-	b.Author.Name = "Erdem"
-	b.Author.AuthorInfo = "good author"
-	b.ID = BookID
-	BookID++
-	b.BookName = "Erdem Book"
-	b.ISBN = "Erdem ISBN"
-	b.PageNumber = 100
-	b.Price = 100
-	b.StockAmount = 100
-	b.IsDelete = false
-
-	return b
-}
-
 //------------------ END Contructor------------------
 
 //-----------------INITIALIZATION----------------
 func init() {
 	fmt.Println("init")
-	e1 := *NewBook()
+	e1 := *model.NewBook()
 	e1.Author.Name = "Erdem Ozgen" // testing purpoese
 	e1.BookName = "Erdem Book1"
 	e1.ISBN = "1411423410"
-	e2 := *NewBook()
+	e2 := *model.NewBook()
 	e2.Author.Name = "William Shakespeare"
 	e2.BookName = "The Tempest"
 	e2.ISBN = "1586638491"
-	e3 := *NewBook()
+	e3 := *model.NewBook()
 	e3.Author.Name = "Hall, Franklin"
 	e3.BookName = "Glorified Fasting: The Abc of Fasting"
 	e3.ISBN = "1684220661"

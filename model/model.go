@@ -5,6 +5,7 @@ import (
 	"strings"
 )
 
+var BookID int64 = 0 // Global Book ID stars from zero increment by 1
 type Book struct {
 	Author             // Author Struct Embedded
 	ID          int64  // Id starts from 0 to increment by 1
@@ -71,4 +72,20 @@ func (b *Book) SetDeleted() {
 	fmt.Println("Book Delete function", b.IsDelete)
 	b.IsDelete = true
 	fmt.Println("Book Deleted", b.IsDelete)
+}
+
+func NewBook() *Book {
+	b := new(Book)
+	b.Author.Name = "Erdem"
+	b.Author.AuthorInfo = "good author"
+	b.ID = BookID
+	BookID++
+	b.BookName = "Erdem Book"
+	b.ISBN = "Erdem ISBN"
+	b.PageNumber = 100
+	b.Price = 100
+	b.StockAmount = 100
+	b.IsDelete = false
+
+	return b
 }
