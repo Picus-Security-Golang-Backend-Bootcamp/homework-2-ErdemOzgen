@@ -24,10 +24,12 @@ func init() {
 	e1.Author.Name = "Erdem" // testing purpoese
 	e1.BookName = "Erdem Book1"
 	e1.ISBN = "1411423410"
+	e1.IsDelete = false
 	e2 := *model.NewBook()
 	e2.Author.Name = "William Shakespeare"
 	e2.BookName = "The Tempest"
 	e2.ISBN = "1586638491"
+	e2.IsDelete = false
 	e3 := *model.NewBook()
 	e3.Author.Name = "Hall"
 	e3.BookName = "Glorified Fasting: The Abc of Fasting"
@@ -62,10 +64,13 @@ func main() {
 	//fmt.Println("e==========>", e)
 	//f1, f2, f3 := model.SearchAll("hall", books)
 	//fmt.Println("f==========>", f1, f2, f3)
+	fmt.Println(len(books))
+	model.ListBooks(books)
 	ss := model.SearchId(1, books)
 	fmt.Println("ss==========>", ss)
 	s3 := model.Delete(1, books)
 	fmt.Println("s3==========>", len(s3))
+	model.ListBooks(books)
 }
 
 //-----------------END MAIN----------------

@@ -30,8 +30,10 @@ type Author struct {
 
 func ListBooks(books []Book) {
 	for i := 0; i < len(books); i++ {
-		if books[i].IsDelete {
+		if !books[i].IsDelete {
 			fmt.Println(i, ":", books[i])
+		} else {
+			fmt.Println("Book is Deleted")
 		}
 	}
 }
@@ -94,19 +96,18 @@ func SearchId(id int, b []Book) int {
 
 func Delete(id int, b []Book) []Book {
 	index := SearchId(id, b)
-	fmt.Println("Book Delete function BEFORE", b[index].IsDelete)
-	b[index].SetDeleted()
-	copy(b[index:], b[index+1:])
+	//fmt.Println("Book Delete function BEFORE", b[index].IsDelete)
+	b[index].IsDelete = false
 
-	fmt.Println("Book Delete function AFTER", b[index].IsDelete)
-	return b[:len(b)-1]
+	//fmt.Println("Book Delete function AFTER", b[index].IsDelete)
+	return b
 }
 
 // Struct method for setting IsDeleted to true
 func (bs *Book) SetDeleted() {
-	fmt.Println("Book Delete function", bs.IsDelete)
+	//fmt.Println("Book Delete function", bs.IsDelete)
 	bs.IsDelete = true
-	fmt.Println("Book Deleted", bs.IsDelete)
+	//fmt.Println("Book Deleted", bs.IsDelete)
 }
 
 // Constructor for Book struct type Book model.Book
