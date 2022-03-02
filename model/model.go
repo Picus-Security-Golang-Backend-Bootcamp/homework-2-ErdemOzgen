@@ -39,6 +39,12 @@ func ListBooks(books []Book) {
 	}
 }
 
+func ListBooksWithoutFilter(books []Book) {
+	for i := 0; i < len(books); i++ {
+		fmt.Println(i, ":", books[i])
+	}
+}
+
 // SearchAuthor function search author name in books struct slice
 func SearchAuthor(s string, b []Book) []Book {
 	var result []Book
