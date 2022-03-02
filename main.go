@@ -13,7 +13,7 @@ type Book model.Book
 //----------------ENDSTRUCTS----------------
 //------------------FUNCTIONS AND Methods------------------
 // Basic contrructor
-func NewErdem() *Book {
+func NewBook() *Book {
 	b := new(Book)
 	b.Author.Name = "Erdem"
 	b.Author.AuthorInfo = "good author"
@@ -92,15 +92,15 @@ var books []Book
 //-----------------INITIALIZATION----------------
 func init() {
 	fmt.Println("init")
-	e1 := *NewErdem()
+	e1 := *NewBook()
 	e1.Author.Name = "Erdem1" // testing purpoese
 	e1.BookName = "Erdem Book1"
 	e1.ISBN = "123456789"
-	e2 := *NewErdem()
+	e2 := *NewBook()
 	e2.Author.Name = "Eren"
 	e2.BookName = "Eren at homeland"
 	e2.ISBN = "666666"
-	e3 := *NewErdem()
+	e3 := *NewBook()
 	e3.Author.Name = "Elif"
 	e3.BookName = "Elif in the disney world"
 	e3.ISBN = "888888"
@@ -125,7 +125,7 @@ func main() {
 	fmt.Println("Search Author")
 	e := searchAuthor("Eren", books)
 	fmt.Println("e==========>", e)
-	f1, f2, f3 := SearchAll("Eren", books)
+	f1, f2, f3 := SearchAll("6666", books)
 	fmt.Println("f==========>", f1, f2, f3)
 
 }
