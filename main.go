@@ -55,7 +55,7 @@ func main() {
 	fmt.Println("--------------------------------")
 
 	fmt.Println("Listing All Books")
-	model.ListBooksWithoutFilter(books)
+	//model.ListBooksWithoutFilter(books)
 	fmt.Println("Listing Ends")
 
 	fmt.Println("--------------------------------")
@@ -64,12 +64,14 @@ func main() {
 	//fmt.Println("e==========>", e)
 	//f1, f2, f3 := model.SearchAll("hall", books)
 	//fmt.Println("f==========>", f1, f2, f3)
-	fmt.Println(len(books))
+	//fmt.Println(len(books))
+	//model.ListBooks(books)
+	//ss := model.SearchId(2, books)
+	//fmt.Println("ss==========>", ss)
+	//model.ListBooks(books)
+	fmt.Println(books[1].StockAmount)
+	model.Buy(0, 100, books)
 	model.ListBooks(books)
-	ss := model.SearchId(2, books)
-	fmt.Println("ss==========>", ss)
-	model.ListBooks(books)
-
 }
 
 //-----------------END MAIN----------------n
