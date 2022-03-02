@@ -21,20 +21,18 @@ type Book model.Book
 func init() {
 	fmt.Println("init")
 	e1 := *model.NewBook()
-	e1.Author.Name = "Erdem Ozgen" // testing purpoese
+	e1.Author.Name = "Erdem" // testing purpoese
 	e1.BookName = "Erdem Book1"
 	e1.ISBN = "1411423410"
-	e1.IsDelete = false
 	e2 := *model.NewBook()
 	e2.Author.Name = "William Shakespeare"
 	e2.BookName = "The Tempest"
 	e2.ISBN = "1586638491"
-	e2.IsDelete = false
 	e3 := *model.NewBook()
-	e3.Author.Name = "Hall, Franklin"
+	e3.Author.Name = "Hall"
 	e3.BookName = "Glorified Fasting: The Abc of Fasting"
 	e3.ISBN = "1684220661"
-	e3.IsDelete = true
+	e3.SetDeleted()
 	books = append(books, model.Book(e1), model.Book(e2), model.Book(e3)) // add to book slice
 
 }
@@ -60,9 +58,9 @@ func main() {
 
 	fmt.Println("--------------------------------")
 	fmt.Println("Search Author")
-	e := model.SearchAuthor("Eren", books)
+	e := model.SearchAuthor("Erdem", books)
 	fmt.Println("e==========>", e)
-	f1, f2, f3 := model.SearchAll("Erdem", books)
+	f1, f2, f3 := model.SearchAll("hall", books)
 	fmt.Println("f==========>", f1, f2, f3)
 
 }
