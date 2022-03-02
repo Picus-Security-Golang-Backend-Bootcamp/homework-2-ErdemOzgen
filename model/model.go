@@ -1,5 +1,7 @@
 package model
 
+import "fmt"
+
 var BookID int = 1 // Global Book ID stars from zero increment by 1
 
 //Book struct //TODO: For better memory allocation rearrange this struct
@@ -48,4 +50,16 @@ func (b *Book) SetBookParams(authorName, bookName, isbn string, pageNumber, pric
 	b.PageNumber = pageNumber
 	b.Price = price
 	b.StockAmount = stockAmount
+}
+
+func (b *Book) BuyBook(amount int) {
+	if b.StockAmount >= amount {
+		b.StockAmount -= amount
+	} else {
+		fmt.Println("Not enough stock")
+	}
+}
+
+func IDtoIndex(id int) int {
+	return id - 1
 }

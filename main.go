@@ -40,13 +40,9 @@ func init() {
 func main() {
 	fmt.Println("main has been started")
 	model.ListBooks(books)
-	i := model.SearchId(-23, books)
-	fmt.Println("i==========>", i)
-	i1, i2, i3 := model.SearchAll("hall", books)
-	fmt.Println("i1==========>", i1)
-	fmt.Println("i2==========>", i2)
-	fmt.Println("i3==========>", i3)
-	fmt.Println("main has been started")
+	model.Buy(1, 200, books)
+	model.ListBooks(books)
+	fmt.Println("main has been stoped")
 }
 
 //-----------------END MAIN----------------n

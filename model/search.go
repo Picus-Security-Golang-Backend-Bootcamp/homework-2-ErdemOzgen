@@ -81,25 +81,3 @@ func SearchId(id int, b []Book) int {
 	}
 	return -1
 }
-
-func Buy(id int, amount int, books []Book) {
-	if SearchId(id, books) != -1 {
-		// check amount is int
-		if amount > 0 {
-			// check stock amount is enough (https://stackoverflow.com/questions/22593259/check-if-string-is-int)
-			if books[id].StockAmount >= amount {
-				//books[SearchId(id, books)].StockAmount = books[SearchId(id, books)].StockAmount - amount
-				books[id].StockAmount = books[id].StockAmount - amount
-				fmt.Println("Book Bought")
-				fmt.Println("Left Stock Amount:", books[id].StockAmount)
-			} else {
-				fmt.Println("Not Enough Stock")
-			}
-		} else {
-			fmt.Println("Amount is not int")
-		}
-	} else {
-		fmt.Println("Book not found")
-	}
-	books[SearchId(id, books)].StockAmount -= amount
-}
