@@ -11,9 +11,9 @@ var books []model.Book
 
 type Book model.Book
 
-//----------------ENDSTRUCTS----------------
-//------------------FUNCTIONS AND Methods------------------
-// Basic contrructor
+//----------------ENDGLOBALS----------------
+//------------------Contructor------------------
+// Basic Contructor
 
 func NewBook() *Book {
 	b := new(Book)
@@ -32,15 +32,7 @@ func NewBook() *Book {
 }
 
 //------------------ END Contructor------------------
-func (b *Book) SetDeleted() {
-	fmt.Println("Book Delete function", b.IsDelete)
-	b.IsDelete = true
-	fmt.Println("Book Deleted", b.IsDelete)
-}
 
-//------------------END FUNCTIONS AND Methods------------------
-
-// ----------------END GLOBAL----------------
 //-----------------INITIALIZATION----------------
 func init() {
 	fmt.Println("init")
