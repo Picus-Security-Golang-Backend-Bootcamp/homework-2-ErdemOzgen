@@ -1,6 +1,6 @@
 package model
 
-var BookID int = 0 // Global Book ID stars from zero increment by 1
+var BookID int = 1 // Global Book ID stars from zero increment by 1
 
 //Book struct //TODO: For better memory allocation rearrange this struct
 type Book struct {

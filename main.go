@@ -6,9 +6,9 @@ import (
 )
 
 //-----------------GLOBALS----------------
-type Book model.Book
+type Book model.Book // type alias
 
-var books []model.Book
+var books []model.Book // books slice for storing initilazed books
 
 //----------------ENDGLOBALS----------------
 
@@ -24,7 +24,7 @@ func init() {
 	e2.Author.Name = "William Shakespeare"
 	e2.BookName = "The Tempest"
 	e2.ISBN = "1586638491"
-	e2.IsDelete = true
+	e2.IsDelete = false
 	e3 := *model.NewBook()
 	e3.Author.Name = "Hall"
 	e3.BookName = "Glorified Fasting: The Abc of Fasting"
@@ -39,7 +39,13 @@ func init() {
 //-----------------MAIN----------------
 func main() {
 	fmt.Println("main has been started")
-
+	model.ListBooks(books)
+	i := model.SearchId(-23, books)
+	fmt.Println("i==========>", i)
+	i1, i2, i3 := model.SearchAll("hall", books)
+	fmt.Println("i1==========>", i1)
+	fmt.Println("i2==========>", i2)
+	fmt.Println("i3==========>", i3)
 	fmt.Println("main has been started")
 }
 
