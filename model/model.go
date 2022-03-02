@@ -39,3 +39,12 @@ func NewBook() *Book {
 
 	return b
 }
+
+func (b *Book) SetBookParams(authorName, bookName, isbn string, pageNumber, price, stockAmount int) {
+	b.Author.Name = authorName
+	b.BookName = bookName
+	b.ISBN = isbn
+	b.PageNumber = pageNumber
+	b.Price = price
+	b.StockAmount = stockAmount
+}
