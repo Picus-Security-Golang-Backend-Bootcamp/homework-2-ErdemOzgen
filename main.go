@@ -6,7 +6,7 @@ import (
 )
 
 //-----------------GLOBALS----------------
-var BookID int64 = 0 // Global variable for book ID
+var BookID int = 0 // Global variable for book ID
 var books []model.Book
 
 type Book model.Book
@@ -57,12 +57,15 @@ func main() {
 	fmt.Println("Listing Ends")
 
 	fmt.Println("--------------------------------")
-	fmt.Println("Search Author")
-	e := model.SearchAuthor("Erdem", books)
-	fmt.Println("e==========>", e)
-	f1, f2, f3 := model.SearchAll("hall", books)
-	fmt.Println("f==========>", f1, f2, f3)
-
+	//fmt.Println("Search Author")
+	//e := model.SearchAuthor("Erdem", books)
+	//fmt.Println("e==========>", e)
+	//f1, f2, f3 := model.SearchAll("hall", books)
+	//fmt.Println("f==========>", f1, f2, f3)
+	ss := model.SearchId(1, books)
+	fmt.Println("ss==========>", ss)
+	s3 := model.Delete(1, books)
+	fmt.Println("s3==========>", len(s3))
 }
 
 //-----------------END MAIN----------------

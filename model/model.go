@@ -5,17 +5,17 @@ import (
 	"strings"
 )
 
-var BookID int64 = 0 // Global Book ID stars from zero increment by 1
+var BookID int = 0 // Global Book ID stars from zero increment by 1
 
 //Book struct
 type Book struct {
 	Author             // Author Struct Embedded
-	ID          int64  // Id starts from 0 to increment by 1
+	ID          int    // Id starts from 0 to increment by 1
 	BookName    string // Book Name
 	ISBN        string // Book ISBN
-	PageNumber  int64  //
-	Price       int64  // TODO: change price to float64
-	StockAmount int64  //
+	PageNumber  int    //
+	Price       int    // TODO: change price to float64
+	StockAmount int    //
 	IsDelete    bool   // Check for book deleted or not
 
 }
@@ -82,13 +82,24 @@ func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 	return authorSlice, titleSlice, skuSlice
 }
 
-func SearchId(id int64, b []Book) (Book, bool) {
+// SearchId function search book id in books struct slice and returns index if not found returns -1
+func SearchId(id int, b []Book) int {
 	for i := 0; i < len(b); i++ {
 		if b[i].ID == id {
-			return b[i], true
+			return i
 		}
 	}
-	return Book{}, false
+	return -1
+}
+
+func Delete(id int, b []Book) []Book {
+	index := SearchId(id, b)
+	fmt.Println("Book Delete function BEFORE", b[index].IsDelete)
+	b[index].SetDeleted()
+	copy(b[index:], b[index+1:])
+
+	fmt.Println("Book Delete function AFTER", b[index].IsDelete)
+	return b[:len(b)-1]
 }
 
 // Struct method for setting IsDeleted to true
@@ -116,9 +127,9 @@ func NewBook() *Book {
 }
 
 type Deleteable interface {
-	Delete(id int64) error
+	Delete(id int) error
 }
 
 type Buyable interface {
-	Buy(id, amount int64) error
+	Buy(id, amount int) error
 }
