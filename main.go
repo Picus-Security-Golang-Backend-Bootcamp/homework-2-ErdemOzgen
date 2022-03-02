@@ -45,19 +45,19 @@ func (b *Book) SetDeleted() {
 func init() {
 	fmt.Println("init")
 	e1 := *NewBook()
-	e1.Author.Name = "Erdem1" // testing purpoese
+	e1.Author.Name = "Erdem Ozgen" // testing purpoese
 	e1.BookName = "Erdem Book1"
-	e1.ISBN = "123456789"
+	e1.ISBN = "1411423410"
 	e2 := *NewBook()
-	e2.Author.Name = "Eren"
-	e2.BookName = "Eren at homeland"
-	e2.ISBN = "666666"
+	e2.Author.Name = "William Shakespeare"
+	e2.BookName = "The Tempest"
+	e2.ISBN = "1586638491"
 	e3 := *NewBook()
-	e3.Author.Name = "Elif"
-	e3.BookName = "Elif in the disney world"
-	e3.ISBN = "888888"
+	e3.Author.Name = "Hall, Franklin"
+	e3.BookName = "Glorified Fasting: The Abc of Fasting"
+	e3.ISBN = "1684220661"
 	books = append(books, model.Book(e1), model.Book(e2), model.Book(e3)) // add to book slice
-	fmt.Println("Books After init", books)
+
 }
 
 //-----------------END INITIALIZATION----------------
@@ -73,11 +73,13 @@ func main() {
 		fmt.Println("Book", i, ":", books[i].ID)
 
 	}
+	fmt.Println("Listing All Books")
 	model.ListBooks(books)
+	fmt.Println("Listing Ends")
 	fmt.Println("Search Author")
 	e := model.SearchAuthor("Eren", books)
 	fmt.Println("e==========>", e)
-	f1, f2, f3 := model.SearchAll("Eren", books)
+	f1, f2, f3 := model.SearchAll("Erdem", books)
 	fmt.Println("f==========>", f1, f2, f3)
 
 }
