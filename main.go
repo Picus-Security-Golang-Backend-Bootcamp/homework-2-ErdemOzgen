@@ -6,20 +6,15 @@ import (
 )
 
 //-----------------GLOBALS----------------
-//var BookID int = 0 // Global variable for book ID
 type Book model.Book
 
 var books []model.Book
 
 //----------------ENDGLOBALS----------------
-//------------------Contructor------------------
-// Basic Contructor
-
-//------------------ END Contructor------------------
 
 //-----------------INITIALIZATION----------------
 func init() {
-	fmt.Println("init")
+	fmt.Println("init has been started")
 	e1 := *model.NewBook()
 	e1.Author.Name = "Erdem" // testing purpoese
 	e1.BookName = "Erdem Book1"
@@ -36,42 +31,16 @@ func init() {
 	e3.ISBN = "1684220661"
 	e3.IsDelete = false
 	books = append(books, model.Book(e1), model.Book(e2), model.Book(e3)) // add to book slice
-
+	fmt.Println("init has been stopped")
 }
 
 //-----------------END INITIALIZATION----------------
 
 //-----------------MAIN----------------
-
 func main() {
-	fmt.Println("main")
+	fmt.Println("main has been started")
 
-	//fmt.Println("Books", books)
-	fmt.Println("BOOKS")
-	for i := 0; i < len(books); i++ {
-		fmt.Println("Book", i, ":", books[i].ID)
-
-	}
-	fmt.Println("--------------------------------")
-
-	fmt.Println("Listing All Books")
-	//model.ListBooksWithoutFilter(books)
-	fmt.Println("Listing Ends")
-
-	fmt.Println("--------------------------------")
-	//fmt.Println("Search Author")
-	//e := model.SearchAuthor("Erdem", books)
-	//fmt.Println("e==========>", e)
-	//f1, f2, f3 := model.SearchAll("hall", books)
-	//fmt.Println("f==========>", f1, f2, f3)
-	//fmt.Println(len(books))
-	//model.ListBooks(books)
-	//ss := model.SearchId(2, books)
-	//fmt.Println("ss==========>", ss)
-	//model.ListBooks(books)
-	fmt.Println(books[1].StockAmount)
-	model.Buy(0, 100, books)
-	model.ListBooks(books)
+	fmt.Println("main has been started")
 }
 
 //-----------------END MAIN----------------n
