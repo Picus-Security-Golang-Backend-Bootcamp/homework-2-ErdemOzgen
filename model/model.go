@@ -23,7 +23,9 @@ type Author struct {
 	AuthorInfo string
 }
 
-// ListBooks function List all books if is not IsDelete set true
+type Deletable interface {
+	Delete()
+}
 
 // Constructor for Book struct type Book model.Book
 func NewBook() *Book {
