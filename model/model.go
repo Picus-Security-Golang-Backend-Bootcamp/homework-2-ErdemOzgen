@@ -82,14 +82,23 @@ func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 	return authorSlice, titleSlice, skuSlice
 }
 
-// Struct method for setting IsDeleted to true
-func (b *Book) SetDeleted() {
-	fmt.Println("Book Delete function", b.IsDelete)
-	b.IsDelete = true
-	fmt.Println("Book Deleted", b.IsDelete)
+func SearchId(id int64, b []Book) (Book, bool) {
+	for i := 0; i < len(b); i++ {
+		if b[i].ID == id {
+			return b[i], true
+		}
+	}
+	return Book{}, false
 }
 
-// Constructor for Book struct
+// Struct method for setting IsDeleted to true
+func (bs *Book) SetDeleted() {
+	fmt.Println("Book Delete function", bs.IsDelete)
+	bs.IsDelete = true
+	fmt.Println("Book Deleted", bs.IsDelete)
+}
+
+// Constructor for Book struct type Book model.Book
 func NewBook() *Book {
 	b := new(Book)
 	b.Author.Name = "Erdem"
@@ -104,4 +113,12 @@ func NewBook() *Book {
 	b.IsDelete = false
 
 	return b
+}
+
+type Deleteable interface {
+	Delete(id int64) error
+}
+
+type Buyable interface {
+	Buy(id, amount int64) error
 }
