@@ -3,6 +3,8 @@ package model
 import (
 	"fmt"
 	"strings"
+
+	"github.com/kr/pretty"
 )
 
 var BookID int = 0 // Global Book ID stars from zero increment by 1
@@ -31,9 +33,10 @@ type Author struct {
 func ListBooks(books []Book) {
 	for i := 0; i < len(books); i++ {
 		if !books[i].IsDelete {
-			fmt.Println(i, ":", books[i])
+			//fmt.Println(i, ":", books[i])
+			pretty.Println(i, ":", books[i])
 		} else {
-			fmt.Print("Book is Deleted")
+			fmt.Println("Book is Deleted")
 			//fmt.Print("") // You can use just like pass in python
 		}
 	}
@@ -41,7 +44,8 @@ func ListBooks(books []Book) {
 
 func ListBooksWithoutFilter(books []Book) {
 	for i := 0; i < len(books); i++ {
-		fmt.Println(i, ":", books[i])
+		//fmt.Printf("%+v\n", books[i])
+		pretty.Println(books[i])
 	}
 }
 

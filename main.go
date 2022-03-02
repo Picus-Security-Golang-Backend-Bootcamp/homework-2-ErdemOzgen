@@ -55,7 +55,7 @@ func main() {
 	fmt.Println("--------------------------------")
 
 	fmt.Println("Listing All Books")
-	model.ListBooks(books)
+	model.ListBooksWithoutFilter(books)
 	fmt.Println("Listing Ends")
 
 	fmt.Println("--------------------------------")
@@ -69,6 +69,7 @@ func main() {
 	ss := model.SearchId(2, books)
 	fmt.Println("ss==========>", ss)
 	model.ListBooks(books)
+
 }
 
 //-----------------END MAIN----------------n
