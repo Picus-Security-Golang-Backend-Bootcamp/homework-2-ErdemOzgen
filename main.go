@@ -3,16 +3,18 @@ package main
 import (
 	"fmt"
 	"homework-2-ErdemOzgen/model"
-	"strings"
 )
 
-//------------------STRUCTS------------------
-// Arrange field in structs for good memory arrangement
+//-----------------GLOBALS----------------
+var BookID int64 = 0 // Global variable for book ID
+var books []model.Book
+
 type Book model.Book
 
 //----------------ENDSTRUCTS----------------
 //------------------FUNCTIONS AND Methods------------------
 // Basic contrructor
+
 func NewBook() *Book {
 	b := new(Book)
 	b.Author.Name = "Erdem"
@@ -36,57 +38,7 @@ func (b *Book) SetDeleted() {
 	fmt.Println("Book Deleted", b.IsDelete)
 }
 
-func ListBooks(b []Book) {
-	for i := 0; i < len(books); i++ {
-		fmt.Println(books[i])
-	}
-}
-
-func searchAuthor(s string, b []Book) []Book {
-	var result []Book
-	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
-	for i := 0; i < len(b); i++ {
-		if strings.Contains(s, strings.ToLower(b[i].Author.Name)) {
-			result = append(result, b[i])
-		}
-	}
-	return result
-}
-func searchBookName(s string, b []Book) []Book {
-	var result []Book
-	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
-	for i := 0; i < len(b); i++ {
-		if strings.Contains(s, strings.ToLower(b[i].BookName)) {
-			result = append(result, b[i])
-		}
-	}
-	return result
-}
-func searchSKU(s string, b []Book) []Book {
-	var result []Book
-	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
-	for i := 0; i < len(b); i++ {
-		if strings.Contains(s, strings.ToLower(b[i].ISBN)) {
-			result = append(result, b[i])
-		}
-	}
-	return result
-}
-
-func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
-	s = strings.ToLower(s) // TODO: remove after strings.ToLower() in other functions
-	authorSlice := searchAuthor(s, b)
-	titleSlice := searchBookName(s, b)
-	skuSlice := searchSKU(s, b)
-
-	return authorSlice, titleSlice, skuSlice
-}
-
 //------------------END FUNCTIONS AND Methods------------------
-
-//-----------------GLOBALS----------------
-var BookID int64 = 0 // Global variable for book ID
-var books []Book
 
 // ----------------END GLOBAL----------------
 //-----------------INITIALIZATION----------------
@@ -104,7 +56,7 @@ func init() {
 	e3.Author.Name = "Elif"
 	e3.BookName = "Elif in the disney world"
 	e3.ISBN = "888888"
-	books = append(books, e1, e2, e3) // add to book slice
+	books = append(books, model.Book(e1), model.Book(e2), model.Book(e3)) // add to book slice
 	fmt.Println("Books After init", books)
 }
 
@@ -121,11 +73,11 @@ func main() {
 		fmt.Println("Book", i, ":", books[i].ID)
 
 	}
-	ListBooks(books)
+	model.ListBooks(books)
 	fmt.Println("Search Author")
-	e := searchAuthor("Eren", books)
+	e := model.SearchAuthor("Eren", books)
 	fmt.Println("e==========>", e)
-	f1, f2, f3 := SearchAll("6666", books)
+	f1, f2, f3 := model.SearchAll("Eren", books)
 	fmt.Println("f==========>", f1, f2, f3)
 
 }
