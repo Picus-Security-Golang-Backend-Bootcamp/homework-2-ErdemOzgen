@@ -94,22 +94,6 @@ func SearchId(id int, b []Book) int {
 	return -1
 }
 
-func Delete(id int, b []Book) []Book {
-	index := SearchId(id, b)
-	//fmt.Println("Book Delete function BEFORE", b[index].IsDelete)
-	b[index].IsDelete = false
-
-	//fmt.Println("Book Delete function AFTER", b[index].IsDelete)
-	return b
-}
-
-// Struct method for setting IsDeleted to true
-func (bs *Book) SetDeleted() {
-	//fmt.Println("Book Delete function", bs.IsDelete)
-	bs.IsDelete = true
-	//fmt.Println("Book Deleted", bs.IsDelete)
-}
-
 // Constructor for Book struct type Book model.Book
 func NewBook() *Book {
 	b := new(Book)

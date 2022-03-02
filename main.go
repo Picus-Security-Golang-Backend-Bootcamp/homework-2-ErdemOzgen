@@ -66,9 +66,9 @@ func main() {
 	//fmt.Println("f==========>", f1, f2, f3)
 	fmt.Println(len(books))
 	model.ListBooks(books)
-	ss := model.SearchId(1, books)
+	ss := model.SearchId(2, books)
 	fmt.Println("ss==========>", ss)
-	s3 := model.Delete(1, books)
+	s3 := model.Delete(0, books)
 	fmt.Println("s3==========>", len(s3))
 	model.ListBooks(books)
 }
