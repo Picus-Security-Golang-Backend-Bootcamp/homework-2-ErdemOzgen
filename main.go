@@ -2,8 +2,12 @@ package main
 
 import (
 	"fmt"
+	"homework-2-ErdemOzgen/customError"
 	"homework-2-ErdemOzgen/model"
+	"homework-2-ErdemOzgen/validator"
 	"os"
+	"strconv"
+	"strings"
 )
 
 //-----------------GLOBALS----------------
@@ -51,7 +55,61 @@ func main() {
 	*/
 	if len(os.Args) == 1 {
 		fmt.Println("No args")
+		fmt.Println("Help")
 		return
+	}
+
+	cmds := os.Args[1]
+	fmt.Println(cmds)
+
+	switch strings.ToLower(cmds) {
+	case "buy", "b", "-b", "--buy":
+		fmt.Println("Buying")
+		if len(os.Args) <= 2 {
+			fmt.Println("Not enough args for buy operation")
+			return
+		}
+		i, _ := strconv.Atoi(os.Args[2])
+		err := validator.ValidatorID(i, books)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		j, err := strconv.Atoi(os.Args[3])
+		if err != nil {
+			fmt.Println(customError.ErrNotInt)
+			return
+		}
+		model.BuySlice(i, j, books)
+		fmt.Println("After Buy operation")
+		model.ListBooks(books)
+
+	case "delete", "d", "--delete", "-d":
+		fmt.Println("Deleting")
+
+		if len(os.Args) <= 2 {
+			fmt.Println("Not enough args for delete operation")
+			return
+		}
+		i, _ := strconv.Atoi(os.Args[2])
+		err := validator.ValidatorID(i, books)
+		if err != nil {
+			fmt.Println(err)
+			return
+		}
+		books = model.DeleteSlice(i, books)
+		fmt.Println("After Delete operation")
+		model.ListBooks(books)
+
+	case "list", "l", "--list", "-l":
+		model.ListBooks(books)
+
+	case "help", "h", "--help", "-h":
+		fmt.Println("HELP")
+
+	default:
+		fmt.Println("Unknown command")
+
 	}
 }
 
