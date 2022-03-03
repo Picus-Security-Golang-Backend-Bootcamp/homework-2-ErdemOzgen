@@ -31,6 +31,7 @@ type Deletable interface {
 	Delete()
 }
 
+// Function implements Deletable interface
 func (b *Book) Delete() {
 	if b.IsDelete {
 		fmt.Println("Book is already deleted")
@@ -67,22 +68,25 @@ func (b *Book) SetBookParams(authorName, bookName, isbn string, pageNumber, pric
 	b.StockAmount = stockAmount
 }
 
+// Function buys the book checks stock amount
 func (b *Book) BuyBook(amount int) error {
 	if b.StockAmount >= amount {
 		b.StockAmount -= amount
 		return nil
 	} else {
-		fmt.Println("Not enough stock")
-		return customError.ErrInSufficentAmount // TODO: Change to error
+		//fmt.Println("Not enough stock")
+		return customError.ErrInSufficentAmount
 	}
 }
 
-//Convert ID to index in slice ==> Basic but needed if algorithm of Id generator change code will be break
+//Convert ID to index in slice
+//==> Basic but needed if algorithm of Id generator change code will be break
 func IDtoIndex(id int) int {
 	return id - 1
 }
 
-//Convert Index to book ID in struct ==> Basic but needed if algorithm of Id generator change code will be break
+//Convert Index to book ID in struct
+//==> Basic but needed if algorithm of Id generator change code will be break
 func IndexToID(index int) int {
 	return index + 1
 }
