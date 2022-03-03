@@ -27,9 +27,9 @@ func ListBooksWithoutFilter(books []Book) {
 }
 
 // SearchAuthor function search author name in books struct slice
-func SearchAuthor(s string, b []Book) []Book {
+func searchAuthor(s string, b []Book) []Book {
 	var result []Book
-	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
+	//s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
 	for i := 0; i < len(b); i++ {
 		if strings.Contains(s, strings.ToLower(b[i].Author.Name)) {
 			result = append(result, b[i])
@@ -39,9 +39,9 @@ func SearchAuthor(s string, b []Book) []Book {
 }
 
 // searchBookName function search book name in books struct slice
-func SearchBookName(s string, b []Book) []Book {
+func searchBookName(s string, b []Book) []Book {
 	var result []Book
-	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
+	//s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
 	for i := 0; i < len(b); i++ {
 		if strings.Contains(s, strings.ToLower(b[i].BookName)) {
 			result = append(result, b[i])
@@ -51,9 +51,9 @@ func SearchBookName(s string, b []Book) []Book {
 }
 
 // search function search book sku in books struct slice
-func SearchSKU(s string, b []Book) []Book {
+func searchSKU(s string, b []Book) []Book {
 	var result []Book
-	s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
+	//s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
 	for i := 0; i < len(b); i++ {
 		if strings.Contains(s, strings.ToLower(b[i].ISBN)) {
 			result = append(result, b[i])
@@ -61,13 +61,21 @@ func SearchSKU(s string, b []Book) []Book {
 	}
 	return result
 }
+func printSearch(s string, b []Book) {
+	if len(b) > 0 {
+		pretty.Println(s, ":", b)
+	}
+}
 
 // SearchAll function is combination of three search functions
 func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 	s = strings.ToLower(s) // TODO: remove after strings.ToLower() in other functions
-	authorSlice := SearchAuthor(s, b)
-	titleSlice := SearchBookName(s, b)
-	skuSlice := SearchSKU(s, b)
+	authorSlice := searchAuthor(s, b)
+	titleSlice := searchBookName(s, b)
+	skuSlice := searchSKU(s, b)
+	printSearch("Author Match Slice", authorSlice)
+	printSearch("Title Match Slice", titleSlice)
+	printSearch("SKU Match Slice", skuSlice)
 
 	return authorSlice, titleSlice, skuSlice
 }
