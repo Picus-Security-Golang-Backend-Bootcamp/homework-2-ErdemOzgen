@@ -1,6 +1,9 @@
 package model
 
-import "fmt"
+import (
+	"fmt"
+	"homework-2-ErdemOzgen/customError"
+)
 
 var BookID int = 1 // Global Book ID stars from zero increment by 1
 
@@ -64,11 +67,13 @@ func (b *Book) SetBookParams(authorName, bookName, isbn string, pageNumber, pric
 	b.StockAmount = stockAmount
 }
 
-func (b *Book) BuyBook(amount int) {
+func (b *Book) BuyBook(amount int) error {
 	if b.StockAmount >= amount {
 		b.StockAmount -= amount
+		return nil
 	} else {
-		fmt.Println("Not enough stock") // TODO: Change to error
+		fmt.Println("Not enough stock")
+		return customError.ErrInSufficentAmount // TODO: Change to error
 	}
 }
 

@@ -3,6 +3,10 @@ package model
 import "fmt"
 
 func BuySlice(id, amount int, books []Book) {
-	books[IDtoIndex(id)].BuyBook(amount) // TODO: check error if  error return DONOT print
-	fmt.Println("Book Bought")           // TODO	: Change to error
+	err := books[IDtoIndex(id)].BuyBook(amount)
+	if err != nil {
+		fmt.Println(err)
+	} else {
+		fmt.Println("Book Bought")
+	}
 }
