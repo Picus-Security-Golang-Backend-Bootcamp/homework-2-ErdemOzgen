@@ -29,7 +29,12 @@ type Deletable interface {
 }
 
 func (b *Book) Delete() {
-	b.IsDelete = true
+	if b.IsDelete {
+		fmt.Println("Book is already deleted")
+	} else {
+		b.IsDelete = true
+	}
+
 }
 
 // Constructor for Book struct type Book model.Book
