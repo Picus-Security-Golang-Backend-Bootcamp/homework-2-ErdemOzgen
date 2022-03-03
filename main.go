@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"homework-2-ErdemOzgen/model"
+	"os"
 )
 
 //-----------------GLOBALS----------------
@@ -38,14 +39,20 @@ func init() {
 
 //-----------------MAIN----------------
 func main() {
-	fmt.Println("main has been started")
-	model.ListBooks(books)
-	model.BuySlice(1, 200, books)
-	books = model.DeleteSlice(1, books)
-	model.ListBooks(books)
-
-	fmt.Println("main has been stoped")
-
+	/*
+		fmt.Println("main has been started")
+		model.ListBooks(books)
+		model.BuySlice(1, 200, books)
+		books = model.DeleteSlice(1, books)
+		model.ListBooks(books)
+		e := validator.ValidatorID(2, books)
+		fmt.Println(e)
+		fmt.Println("main has been stoped")
+	*/
+	if len(os.Args) == 1 {
+		fmt.Println("No args")
+		return
+	}
 }
 
 //-----------------END MAIN----------------n
