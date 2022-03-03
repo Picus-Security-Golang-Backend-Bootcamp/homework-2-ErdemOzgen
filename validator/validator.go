@@ -6,6 +6,7 @@ import (
 	"reflect"
 )
 
+// Function validates Int and returns an error if not int
 func ValidatorInt(a interface{}) error {
 	if reflect.ValueOf(a).Kind() == reflect.Int {
 		return nil
@@ -14,6 +15,7 @@ func ValidatorInt(a interface{}) error {
 	}
 }
 
+// Function validates Id and returns an error if not in dataset
 func ValidatorID(a interface{}, b []model.Book) error {
 	if reflect.ValueOf(a).Kind() == reflect.Int {
 
