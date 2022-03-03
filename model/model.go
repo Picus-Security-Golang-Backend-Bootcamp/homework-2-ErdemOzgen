@@ -63,7 +63,7 @@ func (b *Book) BuyBook(amount int) {
 	if b.StockAmount >= amount {
 		b.StockAmount -= amount
 	} else {
-		fmt.Println("Not enough stock")
+		fmt.Println("Not enough stock") // TODO: Change to error
 	}
 }
 
