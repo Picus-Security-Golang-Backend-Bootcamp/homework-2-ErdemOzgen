@@ -56,7 +56,7 @@ func searchBookName(s string, b []Book) []Book {
 }
 
 // search function search book sku in books struct slice
-func searchSKU(s string, b []Book) []Book {
+func searchISBN(s string, b []Book) []Book {
 	var result []Book
 
 	for i := 0; i < len(b); i++ {
@@ -79,7 +79,7 @@ func SearchAll(s string, b []Book) ([]Book, []Book, []Book) {
 	s = strings.ToLower(s)
 	authorSlice := searchAuthor(s, b)
 	titleSlice := searchBookName(s, b)
-	skuSlice := searchSKU(s, b)
+	skuSlice := searchISBN(s, b)
 	printSearch("Author Match Slice", authorSlice)
 	printSearch("Title Match Slice", titleSlice)
 	printSearch("SKU Match Slice", skuSlice)
