@@ -27,7 +27,7 @@ func init() {
 	e1.Author.Name = "Erdem" // testing purpoese
 	e1.BookName = "Erdem Book1"
 	e1.ISBN = "1411423410"
-	e1.IsDelete = true
+	e1.IsDelete = false // SET true for Testing
 	e2 := *model.NewBook()
 	e2.Author.Name = "William Shakespeare"
 	e2.BookName = "The Tempest"
