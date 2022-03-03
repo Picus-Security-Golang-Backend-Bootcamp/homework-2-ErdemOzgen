@@ -97,5 +97,5 @@ func SearchId(id int, b []Book) int {
 			return i
 		}
 	}
-	return -1 //IDNotInRange Error is not implemented yet
+	return -1
 }
