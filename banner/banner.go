@@ -31,6 +31,14 @@ Available Commands:
   list        List all books in the dataset
   search	  Search for books with author,ISBN,ID takes one argument keyword
   banner 	  Print the ASCII banner that shows the name of the author,version,date and the command line
+
+Alternative Commands:
+  -h, --help      
+  -b, --buy       
+  -d, --delete    
+  -l, --list      
+  -s, --search    
+  -b, --banner    
 `
 
 func PrintBanner() {

@@ -57,7 +57,6 @@ func main() {
 		fmt.Println("main has been stoped")
 	*/
 	if len(os.Args) == 1 {
-		fmt.Println("No args")
 		banner.PrintHelp()
 		return
 	}
