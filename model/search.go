@@ -31,9 +31,14 @@ func searchAuthor(s string, b []Book) []Book {
 	var result []Book
 	//s = strings.ToLower(s) // TODO: remove after SearchAll function fully tested
 	for i := 0; i < len(b); i++ {
-		if strings.Contains(s, strings.ToLower(b[i].Author.Name)) {
-			result = append(result, b[i])
+		a := strings.ToLower(b[i].Author.Name)
+		as := strings.Split(a, " ")
+		for j := 0; j < len(as); j++ {
+			if strings.Contains(s, as[j]) {
+				result = append(result, b[i])
+			}
 		}
+
 	}
 	return result
 }
