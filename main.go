@@ -60,7 +60,6 @@ func main() {
 	}
 
 	cmds := os.Args[1]
-	fmt.Println(cmds)
 
 	switch strings.ToLower(cmds) {
 	case "buy", "b", "-b", "--buy":
