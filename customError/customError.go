@@ -7,6 +7,7 @@ import (
 var ErrInSufficentAmount = errors.New("there is no sufficient amount in stocks")
 var ErrIDNotInRange = errors.New("id is not in range")
 var ErrNotInt = errors.New("given value is not int")
+var ErrBookIsDeleted = errors.New("book is deleted cant do operation in deleted state")
 
 // Error represents not enough stock amount
 func InSufficentAmount() error {

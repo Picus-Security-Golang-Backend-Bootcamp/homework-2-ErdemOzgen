@@ -70,6 +70,9 @@ func (b *Book) SetBookParams(authorName, bookName, isbn string, pageNumber, pric
 
 // Function buys the book checks stock amount
 func (b *Book) BuyBook(amount int) error {
+	if b.IsDelete {
+		return customError.ErrBookIsDeleted
+	}
 	if b.StockAmount >= amount {
 		b.StockAmount -= amount
 		return nil
@@ -77,6 +80,7 @@ func (b *Book) BuyBook(amount int) error {
 		//fmt.Println("Not enough stock")
 		return customError.ErrInSufficentAmount
 	}
+
 }
 
 //Convert ID to index in slice
